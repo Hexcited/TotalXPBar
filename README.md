@@ -1,6 +1,8 @@
 # TotalXPBar – (3.3.5) for Project Epoch
 
-[!TotalXPBar Preview](docs/preview.png)
+<p align="center">
+  <img src="docs/preview.PNG" alt="TotalXPBar Preview" width="400">
+</p>
 
 Ever wanted to see your total progress to max level?
 
