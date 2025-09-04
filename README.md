@@ -1,6 +1,6 @@
 # TotalXPBar – (3.3.5) for Project Epoch
 
-![TotalXPBar Preview](https://imgur.com/51LP2CN)
+[!TotalXPBar Preview](https://i.imgur.com/DYyUKdA.png)
 
 Ever wanted to see your total progress to max level?
 
