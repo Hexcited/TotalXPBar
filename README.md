@@ -1,5 +1,7 @@
 # TotalXPBar – (3.3.5) for Project Epoch
 
+![TotalXPBar Preview](https://imgur.com/51LP2CN)
+
 Ever wanted to see your total progress to max level?
 
 TotalXPBar is a lightweight and minimal World of Warcraft (3.3.5) addon that tracks your total XP towards level 60.  
