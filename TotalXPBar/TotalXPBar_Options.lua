@@ -54,7 +54,6 @@ SlashCmdList["TOTALXPBAR"] = function(msg)
     msg = string.lower(msg or "")
 
     if msg == "" then
-        -- default: toggle options panel
         if panel:IsShown() then
             panel:Hide()
         else
@@ -93,14 +92,14 @@ end
 -- === ScrollFrame Setup ===
 local scrollFrame = CreateFrame("ScrollFrame", "TotalXPBar_ScrollFrame", panel, "UIPanelScrollFrameTemplate")
 scrollFrame:SetPoint("TOPLEFT", subtitle, "BOTTOMLEFT", 0, -20)
-scrollFrame:SetPoint("BOTTOMRIGHT", panel, "BOTTOMRIGHT", -30, 60) -- leave space for buttons
+scrollFrame:SetPoint("BOTTOMRIGHT", panel, "BOTTOMRIGHT", -30, 60)
 
 -- Content frame inside scrollFrame
 local content = CreateFrame("Frame", "TotalXPBar_ScrollContent", scrollFrame)
-content:SetSize(1, 1) -- will expand with children
+content:SetSize(1, 1)
 scrollFrame:SetScrollChild(content)
 
--- Helper to create checkboxes
+-- Checkboxes
 local function CreateCheckbox(name, parent, label, anchorTo, x, y)
 	local cb = CreateFrame("CheckButton", name, parent, "UICheckButtonTemplate")
 	cb:SetPoint("TOPLEFT", anchorTo, "BOTTOMLEFT", x, y)
@@ -109,7 +108,7 @@ local function CreateCheckbox(name, parent, label, anchorTo, x, y)
 	return cb
 end
 
--- Helper function to create a slider
+-- Slider
 local function CreateSlider(name, parent, anchorTo, x, y, minVal, maxVal, step, label)
     local slider = CreateFrame("Slider", name, parent, "OptionsSliderTemplate")
     slider:SetPoint("TOPLEFT", anchorTo, "BOTTOMLEFT", x, y)
@@ -131,7 +130,7 @@ separator:SetHeight(1)
 separator:SetPoint("TOPLEFT", content, "TOPLEFT", 0, -10)
 separator:SetPoint("RIGHT", content, "RIGHT", -16, 0)
 
--- === Status Text Section ===
+-- === Status Text ===
 local statusTitle = content:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 statusTitle:SetPoint("TOPLEFT", separator, "BOTTOMLEFT", 0, -10)
 statusTitle:SetText("Status Text")

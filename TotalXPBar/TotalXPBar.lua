@@ -1,5 +1,4 @@
 -- TotalXPBar.lua
--- Minimal, clean XP bar for Classic (1-60) with border, background, centered fade-in text, and movable
 
 -- Event frame
 local f = CreateFrame("Frame")
@@ -20,7 +19,7 @@ for i = 1, #XPPerLevel do
     TOTAL_XP_NEEDED = TOTAL_XP_NEEDED + XPPerLevel[i]
 end
 
--- Format numbers with commas
+-- Format numbers
 local function CommaValue(n)
     local s = tostring(n)
     local rev = s:reverse():gsub("(%d%d%d)","%1,"):reverse()
@@ -28,14 +27,14 @@ local function CommaValue(n)
     return rev
 end
 
--- Create main frame
+-- Main frame
 local main = CreateFrame("Frame", "TotalXPBarMainFrame", UIParent)
 main:SetSize(500, 22)
 main:SetPoint("TOP", UIParent, "TOP", 0, -10)
 
 local padding = 2
 
--- Background texture
+-- Background
 local bg = main:CreateTexture(nil, "BACKGROUND")
 bg:SetPoint("TOPLEFT", main, "TOPLEFT", padding, -padding)
 bg:SetPoint("BOTTOMRIGHT", main, "BOTTOMRIGHT", -padding, padding)
@@ -74,8 +73,8 @@ infoText = main:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 infoText:SetPoint("CENTER", main, "CENTER", 0, 0)
 infoText:SetJustifyH("CENTER")
 infoText:SetTextColor(1,1,1,1)
-infoText:SetAlpha(TotalXPBarDB.showStatusText and 1 or 0) -- always visible if option is true
-infoText:SetDrawLayer("OVERLAY", 2) -- above bar
+infoText:SetAlpha(TotalXPBarDB.showStatusText and 1 or 0)
+infoText:SetDrawLayer("OVERLAY", 2)
 
 -- Fade functions
 local function FadeIn(self)
@@ -154,7 +153,7 @@ function SetBarMovable(movable)
         end)
     else
         main:SetMovable(false)
-        main:EnableMouse(true) -- keep mouse for hover
+        main:EnableMouse(true)
         main:SetScript("OnDragStart", nil)
         main:SetScript("OnDragStop", nil)
     end
@@ -167,7 +166,7 @@ f:RegisterEvent("PLAYER_LEVEL_UP")
 
 f:SetScript("OnEvent", function(self, event, ...)
     if event == "PLAYER_ENTERING_WORLD" then
-        TotalXPBar_UpdatePosition()       -- position after SavedVariables loaded
+        TotalXPBar_UpdatePosition()
         SetBarMovable(TotalXPBarDB.unlocked or false)
     end
     TotalXPBar_UpdateBar()
