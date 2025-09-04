@@ -1,0 +1,10 @@
+## Interface: 30300
+## Title: TotalXPBar
+## Notes: Total Experience bar from level 1 to 60. [3.3.5] - |cFFAAAAAAv1.0|r
+## Author: Hexcited
+## Version: 1.0
+## SavedVariables: TotalXPBarDB
+## Dependencies: !!!ClassicAPI
+
+TotalXPBar.lua
+TotalXPBar_Options.lua

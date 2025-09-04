@@ -1,0 +1,1 @@
+C_NamePlates = C_NamePlates or {}
