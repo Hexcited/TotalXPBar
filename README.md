@@ -27,5 +27,7 @@ Designed for Project Epoch (1–60).
 ---
 
 ## Credits
-- Thanks to my friend Lokir who requested an addon that tracks your progress to max level and I got inspired. It made my life harder.
-- Special thanks to [Tsoukie](https://gitlab.com/Tsoukie) for the ClassicAPI. It made my life easier.
+- Thanks to my friend Lokir who requested an addon that tracks your progress to max level and I got inspired.  
+It made my life harder.
+- Special thanks to [Tsoukie](https://gitlab.com/Tsoukie) for the ClassicAPI.  
+It made my life easier.
