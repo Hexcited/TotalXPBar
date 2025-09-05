@@ -1,8 +1,8 @@
 ## Interface: 30300
 ## Title: TotalXPBar
-## Notes: Total Experience bar from level 1 to 60. [3.3.5] - |cFFAAAAAAv1.0|r
+## Notes: Total Experience bar from level 1 to 60. [3.3.5] - |cFFAAAAAAv1.1|r
 ## Author: Hexcited
-## Version: 1.0
+## Version: 1.1
 ## SavedVariables: TotalXPBarDB
 ## Dependencies: !!!ClassicAPI
 

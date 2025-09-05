@@ -1,5 +1,6 @@
 -- TotalXPBar.lua
 
+
 -- Event frame
 local f = CreateFrame("Frame")
 
@@ -19,7 +20,7 @@ for i = 1, #XPPerLevel do
     TOTAL_XP_NEEDED = TOTAL_XP_NEEDED + XPPerLevel[i]
 end
 
--- Format numbers
+-- Format numbers with commas
 local function CommaValue(n)
     local s = tostring(n)
     local rev = s:reverse():gsub("(%d%d%d)","%1,"):reverse()
@@ -27,14 +28,14 @@ local function CommaValue(n)
     return rev
 end
 
--- Main frame
+-- Create main frame
 local main = CreateFrame("Frame", "TotalXPBarMainFrame", UIParent)
 main:SetSize(500, 22)
 main:SetPoint("TOP", UIParent, "TOP", 0, -10)
 
 local padding = 2
 
--- Background
+-- Background texture
 local bg = main:CreateTexture(nil, "BACKGROUND")
 bg:SetPoint("TOPLEFT", main, "TOPLEFT", padding, -padding)
 bg:SetPoint("BOTTOMRIGHT", main, "BOTTOMRIGHT", -padding, padding)
@@ -57,6 +58,7 @@ if TotalXPBarDB.showStatusText == nil then TotalXPBarDB.showStatusText = false e
 if TotalXPBarDB.showPercent == nil then TotalXPBarDB.showPercent = false end
 if TotalXPBarDB.showCurrent == nil then TotalXPBarDB.showCurrent = false end
 if TotalXPBarDB.unlocked == nil then TotalXPBarDB.unlocked = false end
+if TotalXPBarDB.font == nil then TotalXPBarDB.font = "GameFontNormal" end
 
 -- Status bar
 local bar = CreateFrame("StatusBar", "TotalXPBarStatusBar", main)
@@ -76,20 +78,27 @@ infoText:SetTextColor(1,1,1,1)
 infoText:SetAlpha(TotalXPBarDB.showStatusText and 1 or 0)
 infoText:SetDrawLayer("OVERLAY", 2)
 
+-- Apply saved settings
+local function ApplySavedSettings()
+    infoText:SetFontObject(TotalXPBarDB.font or "GameFontNormal")
+    infoText:SetAlpha(TotalXPBarDB.showStatusText and 1 or 0)
+    TotalXPBar_UpdateBar()
+end	
+
 -- Fade functions
 local function FadeIn(self)
     if not TotalXPBarDB.showStatusText then
-        UIFrameFadeIn(infoText, 0.0, infoText:GetAlpha(), 1)
+        UIFrameFadeIn(infoText, 0.3, infoText:GetAlpha(), 1)
     end
 end
 
 local function FadeOut(self)
     if not TotalXPBarDB.showStatusText then
-        UIFrameFadeOut(infoText, 0.0, infoText:GetAlpha(), 0)
+        UIFrameFadeOut(infoText, 0.3, infoText:GetAlpha(), 0)
     end
 end
 
--- Enable mouse for main frame for hover
+-- Enable mouse for main frame
 main:EnableMouse(true)
 main:SetScript("OnEnter", FadeIn)
 main:SetScript("OnLeave", FadeOut)
@@ -168,6 +177,7 @@ f:SetScript("OnEvent", function(self, event, ...)
     if event == "PLAYER_ENTERING_WORLD" then
         TotalXPBar_UpdatePosition()
         SetBarMovable(TotalXPBarDB.unlocked or false)
+        ApplySavedSettings()
     end
     TotalXPBar_UpdateBar()
 end)
@@ -175,5 +185,5 @@ end)
 
 -- Initial update
 print("|cFFFFFF00# TotalXPBar|r: Loaded! /txp for Options or /txp help")
-print("|cFFFFFF00# TotalXPBar|r: Version 1.0")
+print("|cFFFFFF00# TotalXPBar|r: Version 1.1")
 
